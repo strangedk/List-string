@@ -4,6 +4,27 @@
 using utils::NodeList;
 using utils::Node;
 
+NodeList::NodeList() {
+
+}
+
+NodeList::NodeList(size_t size, std::string defaultData = "Default") {
+	if (size > 0) {
+		for (size_t i = 0; i < size; ++i)
+			Push(defaultData);
+	}
+}
+
+NodeList::~NodeList() {
+	Node* next;
+	for (Node* iter = head; iter; iter = next) {
+		next = iter->next;
+		delete iter;
+	}
+	delete head;
+	delete tail;
+}
+
 size_t NodeList::Size() {
 	size_t result = 0;
 	for (Node* iter = Head(); iter; iter = iter->next)
