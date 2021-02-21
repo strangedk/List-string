@@ -4,8 +4,21 @@
 using utils::NodeList;
 using utils::Node;
 
-NodeList::NodeList() {
+Node::Node(std::string data): data(data) {
+	// NOP
+}
 
+Node::Node(const Node& node) {
+	data = node.data;
+}
+
+NodeList::NodeList() {
+	// NOP
+}
+
+NodeList::NodeList(const NodeList& list) {
+	for (Node* node = list.Head(); node; node = node->next)
+		this->Push(node->data);
 }
 
 NodeList::NodeList(size_t size, std::string defaultData = "Default") {

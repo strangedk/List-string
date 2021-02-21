@@ -25,17 +25,13 @@ int main() {
 		->Push("Lestat")
 		->ShowNodes();
 
-	// Search nodes which will need to identify specific nodes
-	Node* toSearch = list->FindNode("Leilla");
-	Node* toPasteAfter = list->FindNode("Mirres");
+	// Copy source list with copy constructor
+	NodeList* copiedList = new NodeList(*list);
 
-	// Deleting selected node and show results
-	list->Delete(toSearch)
-		->ShowNodes()
-		// Insert a new node and show results
-		->InsertAfter("Novice", toPasteAfter)
-		->ShowNodes()
-		// Reverse the list and show results
-		->Reverse()
-		->ShowNodes();
+	list->Delete(list->FindNode("Rubent"));
+	list->Delete(list->FindNode("Maffyn"));
+	list->Delete(list->FindNode("Leilla"));
+
+	list->ShowNodes();
+	copiedList->ShowNodes();
 }

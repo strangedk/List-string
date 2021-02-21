@@ -8,7 +8,8 @@ namespace utils {
 
 		std::string data = nullptr;
 
-		Node(std::string data) : data(data) { };
+		Node(std::string data);
+		Node(const Node& node);
 	};
 
 	class NodeList {
@@ -18,6 +19,7 @@ namespace utils {
 	public:
 		NodeList();
 		NodeList(size_t size, std::string defaultData);
+		NodeList(const NodeList& list);
 		~NodeList();
 
 		size_t Size();
